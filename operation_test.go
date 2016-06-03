@@ -45,7 +45,7 @@ var operation = Operation{
 			Parameter{Refable: Refable{Ref: MustCreateRef("Cat")}},
 		},
 		Responses: &Responses{
-			responsesProps: responsesProps{
+			ResponsesProps: ResponsesProps{
 				Default: &Response{
 					ResponseProps: ResponseProps{
 						Description: "void response",
