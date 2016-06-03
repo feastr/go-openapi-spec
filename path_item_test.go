@@ -28,7 +28,7 @@ var pathItem = PathItem{
 			"x-framework": "go-swagger",
 		},
 	},
-	pathItemProps: pathItemProps{
+	PathItemProps: PathItemProps{
 		Get: &Operation{
 			operationProps: operationProps{Description: "get operation description"},
 		},
