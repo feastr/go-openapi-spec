@@ -27,7 +27,7 @@ var operation = Operation{
 			"x-framework": "go-swagger",
 		},
 	},
-	operationProps: operationProps{
+	OperationProps: OperationProps{
 		Description: "operation description",
 		Consumes:    []string{"application/json", "application/x-yaml"},
 		Produces:    []string{"application/json", "application/x-yaml"},
