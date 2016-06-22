@@ -342,7 +342,7 @@ func ExpandSpec(spec *Swagger) error {
 
 	if spec.Paths != nil {
 		for key, path := range spec.Paths.Paths {
-			if err := expandPathItem(&path, resolver); err != nil {
+			if err := expandPathItem(path, resolver); err != nil {
 				return err
 			}
 			spec.Paths.Paths[key] = path

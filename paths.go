@@ -30,7 +30,7 @@ import (
 // For more information: http://goo.gl/8us55a#pathsObject
 type Paths struct {
 	VendorExtensible
-	Paths map[string]PathItem `json:"-"` // custom serializer to flatten this, each entry must start with "/"
+	Paths map[string]*PathItem `json:"-"` // custom serializer to flatten this, each entry must start with "/"
 }
 
 // JSONLookup look up a value by the json property name
@@ -63,13 +63,13 @@ func (p *Paths) UnmarshalJSON(data []byte) error {
 		}
 		if strings.HasPrefix(k, "/") {
 			if p.Paths == nil {
-				p.Paths = make(map[string]PathItem)
+				p.Paths = make(map[string]*PathItem)
 			}
 			var pi PathItem
 			if err := json.Unmarshal(v, &pi); err != nil {
 				return err
 			}
-			p.Paths[k] = pi
+			p.Paths[k] = &pi
 		}
 	}
 	return nil
@@ -82,7 +82,7 @@ func (p Paths) MarshalJSON() ([]byte, error) {
 		return nil, err
 	}
 
-	pths := make(map[string]PathItem)
+	pths := make(map[string]*PathItem)
 	for k, v := range p.Paths {
 		if strings.HasPrefix(k, "/") {
 			pths[k] = v
